@@ -1,36 +1,42 @@
 <!--index.wxml-->
 <view class="container">
   <view class='user-container'>
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image id="aaa" bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view>
-    <text>分数:{{score}}</text>
-  </view>
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image id="aaa" bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <view>
+      <text bindtap='init'>分数:<block id="score">{{score}}</block></text>
+    </view>
+    <view>
+      <button bindtap='bindButton'>new Game</button>
+    </view>
   </view>
   <view class="grid-container">
-    <view class="grid-cell" id="grid-cell-0-0">1</view>
-    <view class="grid-cell" id="grid-cell-0-1">2</view>
-    <view class="grid-cell" id="grid-cell-0-2"></view>
-    <view class="grid-cell" id="grid-cell-0-3"></view>
+    <block wx:for="{{cell_j}}" wx:for-item="i" wx:for-index="i_idx">
+      <view wx:for="{{cell_j}}" wx:for-item="j" wx:for-index="j_idx" class="grid-cell" style='top:24*({{i}}+1)rpx; left:24*({{j}}+1)+120*{{j}}rpx' bindtouchmove="bindMove" id="grid-cell-0-0"></view>
+    </block>
 
-    <view class="grid-cell" id="grid-cell-1-0"></view>
-    <view class="grid-cell" id="grid-cell-1-1"></view>
-    <view class="grid-cell" id="grid-cell-1-2"></view>
-    <view class="grid-cell" id="grid-cell-1-3"></view>
+    <!-- <view class="" id="grid-cell-0-1">0-1</view>
+    <view class="" id="grid-cell-0-2">0-2</view>
+    <view class="" id="grid-cell-0-3">0-3</view> -->
+    <!-- 
+    <view class="grid-cell" id="grid-cell-1-0">1-0</view>
+    <view class="grid-cell" id="grid-cell-1-1">1-1</view>
+    <view class="grid-cell" id="grid-cell-1-2">1-2</view>
+    <view class="grid-cell" id="grid-cell-1-3">1-3</view>
 
-    <view class="grid-cell" id="grid-cell-2-0"></view>
-    <view class="grid-cell" id="grid-cell-2-1"></view>
-    <view class="grid-cell" id="grid-cell-2-2"></view>
-    <view class="grid-cell" id="grid-cell-2-3"></view>
+    <view class="grid-cell" id="grid-cell-2-0">2-0</view>
+    <view class="grid-cell" id="grid-cell-2-1">2-1</view>
+    <view class="grid-cell" id="grid-cell-2-2">2-2</view>
+    <view class="grid-cell" id="grid-cell-2-3">2-3</view>
 
-    <view class="grid-cell" id="grid-cell-3-0"></view>
-    <view class="grid-cell" id="grid-cell-3-1"></view>
-    <view class="grid-cell" id="grid-cell-3-2">2</view>
-    <view class="grid-cell" id="grid-cell-3-3">1</view>
+    <view class="grid-cell" id="grid-cell-3-0">3-0</view>
+    <view class="grid-cell" id="grid-cell-3-1">3-1</view>
+    <view class="grid-cell" id="grid-cell-3-2">3-2</view>
+    <view class="grid-cell" id="grid-cell-3-3">3-3</view> -->
   </view>
 </view>
